@@ -26,13 +26,14 @@ import redis.clients.jedis.params.MigrateParams;
 import redis.clients.jedis.params.SetParams;
 import redis.clients.jedis.params.ZAddParams;
 import redis.clients.jedis.params.ZIncrByParams;
+import redis.clients.jedis.util.Pool;
 import redis.clients.jedis.util.SafeEncoder;
 import redis.clients.jedis.util.Slowlog;
 
 public class Jedis extends BinaryJedis implements JedisCommands, MultiKeyCommands,
     AdvancedJedisCommands, ScriptingCommands, BasicCommands, ClusterCommands, SentinelCommands, ModuleCommands {
 
-  protected JedisPoolAbstract dataSource = null;
+  private Pool<Jedis> dataSource = null;
 
   public Jedis() {
     super();
@@ -3463,7 +3464,7 @@ public class Jedis extends BinaryJedis implements JedisCommands, MultiKeyCommand
     }
   }
 
-  public void setDataSource(JedisPoolAbstract jedisPool) {
+  public void setDataSource(Pool<Jedis> jedisPool) {
     this.dataSource = jedisPool;
   }
 
