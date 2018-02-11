@@ -8,9 +8,6 @@ import redis.clients.jedis.HostAndPort;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by smagellan on 7/11/16.
- */
 public class HostAndPortTest {
   @Test
   public void checkExtractParts() throws Exception {
@@ -55,11 +52,5 @@ public class HostAndPortTest {
   public void checkParseStringWithoutPort() throws Exception {
     String host = "localhost";
     HostAndPort.parseString(host + ":");
-  }
-
-  @Test
-  public void checkConvertHost() {
-    String host = "2a11:1b1:0:111:e111:1f11:1111:1f1e";
-    assertEquals(HostAndPort.convertHost(host), host);
   }
 }
